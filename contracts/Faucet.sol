@@ -2,6 +2,8 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
+import "./IERC20.sol";
+
 contract Faucet {
     uint256 public amountAllowed = 100; // 每次领100单位代币
     address public tokenContract; // token合约地址
@@ -30,6 +32,6 @@ contract Faucet {
         token.transfer(msg.sender, amountAllowed); // 发送token
         requestedAddress[msg.sender] = true; // 记录领取地址
 
-        emit SendToken(msg.sender, amountAllowed); // 释放SendToken事件
+        emit sendToken(msg.sender, amountAllowed); // 释放SendToken事件
     }
 }
